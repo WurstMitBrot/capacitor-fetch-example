@@ -1,0 +1,7 @@
+{
+  "name": "capacitor-fetch-example",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
