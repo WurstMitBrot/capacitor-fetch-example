@@ -14,15 +14,6 @@ import { User } from "../model/User";
 const Tab1: React.FC = () => {
   const [users, setUsers] = useState<User[]>();
 
-  const getNewUser = (): User => {
-    return {
-      id: Math.random() * 1000,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      number: "1234567890",
-    };
-  };
-
   /**
    * Making the post request with capacitor using data as Property works
    */
@@ -71,12 +62,18 @@ const Tab1: React.FC = () => {
 
   /**
    * Creating users with fetch using request object fails
-   * 
+   *
    * There was a problem creating the user:
    * TypeError: Input body is locked.
    */
   const createUserRequestObject = () => {
-    const newUser = getNewUser();
+    const newUser = {
+      id: Math.random() * 1000,
+      name: "Fetch User´",
+      email: "fetchUser@test.com",
+      number: "1234567890",
+    };
+
     const request = new Request("http://localhost:8000/users", {
       method: "POST",
       body: JSON.stringify(newUser),
@@ -106,47 +103,52 @@ const Tab1: React.FC = () => {
   const createUser = () => {
     const url = "http://localhost:8000/users";
 
-    const newUser = getNewUser();
+    const newUser = {
+      id: Math.random() * 1000,
+      name: "Fetch User´",
+      email: "fetchUser@test.com",
+      number: "1234567890",
+    };
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newUser)
+      body: JSON.stringify(newUser),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Testing fetch and Capacitor</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Testing fetch and Capacitor</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonButton expand="full" onClick={fetchUsers}>
-          Make Request fetch
+          Make Request fetch ✔︎
         </IonButton>
         <IonButton expand="full" onClick={createUserCapacitor}>
-          Make Request Capacitor Http
+          Make Request Capacitor Http ✔︎
         </IonButton>
         <IonButton expand="full" onClick={createUserRequestObject}>
-          Create User fetch Request Object
+          Create User fetch Request Object ✕
         </IonButton>
         <IonButton expand="full" onClick={createUser}>
-          Create User fetch
+          Create User fetch ✔︎
         </IonButton>
         {users && users.map((user) => <p key={user.id}>{user.name}</p>)}
       </IonContent>
