@@ -16,6 +16,7 @@ There are two tabs using code snippets show where issues are.
 
 # Starting the App
 
+The Example makes use of json-server https://www.npmjs.com/package/json-server
 In order to make the requests the json server has to be started.
 ```
 npm run startJsonBackend
