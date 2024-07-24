@@ -5,7 +5,9 @@ const config: CapacitorConfig = {
   appName: "capacitor-fetch-example",
   webDir: "dist",
   server: {
-    androidScheme: "https",
+    androidScheme: "http",
+    cleartext: true,
+    // url: "http://192.168.2.34:8101",
   },
   plugins: {
     CapacitorHttp: {
