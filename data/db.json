@@ -7,27 +7,9 @@
       "number": "555 555"
     },
     {
-      "id": "2",
-      "name": "User Two",
-      "email": "ut@test.com",
-      "number": "555 666"
-    },
-    {
-      "id": "3",
-      "name": "User Three",
-      "email": "ut@test.com",
-      "number": "555 444"
-    },
-    {
-      "id": "4",
-      "name": "User Four",
-      "email": "uf@test.com",
-      "number": "555 777"
-    },
-    {
-      "id": "299.86225596285374",
-      "name": "capUser Name",
-      "email": "mail@capuser.com",
+      "id": 266.5766999511996,
+      "name": "Fetch User´",
+      "email": "fetchUser@test.com",
       "number": "1234567890"
     }
   ]

@@ -1,4 +1,4 @@
-import { User } from '../model/User';
+import { User } from "../model/User";
 import { apiSlice } from "./apiSlice";
 
 export const userInvoiceSlice = apiSlice.injectEndpoints({
@@ -6,7 +6,10 @@ export const userInvoiceSlice = apiSlice.injectEndpoints({
     getUser: builder.query<User[], void>({
       query: () => "/users",
     }),
-    createUser: builder.mutation({
+    createUser: builder.mutation<
+      void,
+      { name: string; email: string; number: string }
+    >({
       query: (user) => ({
         url: "/users",
         method: "POST",
@@ -16,5 +19,4 @@ export const userInvoiceSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetUserQuery, useCreateUserMutation } =
-  userInvoiceSlice;
+export const { useGetUserQuery, useCreateUserMutation } = userInvoiceSlice;

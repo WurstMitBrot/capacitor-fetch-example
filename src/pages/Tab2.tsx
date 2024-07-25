@@ -21,11 +21,10 @@ const Tab2: React.FC = () => {
   const [createUser, { isLoading: creatingUser }] = useCreateUserMutation();
 
   /**
-   * Creating a user using a rtk query mutation. Doens't work. Worked with 5.7.0
+   * Creating a user using a rtk query mutation. Doens't work with android, still does in the browser and ios.
    */
   const onCreateUser = async () => {
     try {
-      // THIS CRASHES WITH --> [Error] Failed to create user: – {status: "FETCH_ERROR", error: "TypeError: Input body is locked."}
       await createUser({
         name: "John Doe",
         email: "john.doe@example.com",
@@ -51,10 +50,10 @@ const Tab2: React.FC = () => {
         </IonHeader>
         <IonLoading isOpen={creatingUser} />
         <IonButton expand="full" onClick={onCreateUser}>
-          Create user rtk query
+          Create user rtk query ✕
         </IonButton>
         <IonButton expand="full" onClick={refetch}>
-          Refetch users
+          Refetch users ✔︎
         </IonButton>
         {isLoading && <IonSpinner />}
         {isError && <IonText color="danger">Error</IonText>}
